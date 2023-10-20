@@ -6,16 +6,17 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev'
 
-const sourceDir = path.join(__dirname, 'src');
+const sourceDir = path.join(__dirname, 'client');
 const sharedDir = path.join(__dirname, 'shared');
-const stylesDir = path.join(__dirname, 'styles'); // skip if you are using vanilla css
+const stylesDir = path.join(__dirname, 'client/styles'); // skip if you are using vanilla css
 const modulesDir = 'node_modules';
 
+console.log({ stylesDir });
 
 module.exports = {
   entry: [
-    path.join(dirApp, 'index.js'),
-    path.join(dirStyles, 'index.scss')
+    path.join(sourceDir, 'index.js'),
+    path.join(stylesDir, 'index.scss')
   ],
 
   resolve: {
@@ -78,6 +79,12 @@ module.exports = {
             loader: 'sass-loader'
           }
         ]
+      },
+
+      {
+        test: /\.(glsl|frag|vert)$/,
+        loader: 'raw-loader',
+        exclude: /node_modules/
       },
 
       {

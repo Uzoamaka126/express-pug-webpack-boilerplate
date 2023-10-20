@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server:build": "node app.js",
+    "server:dev": "nodemon app.js",
+    "client:build": "webpack --progress --config webpack.config.build.js",
+    "client:dev": "webpack serve --progress --config webpack.config.development.js",
+    "start": "concurrently --kill-others \"npm run server:dev\" \"npm run client:dev\""
   },
   "repository": {
     "type": "git",
@@ -28,6 +32,8 @@
     "concurrently": "^8.2.2",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
+    "dotenv": "^16.3.1",
+    "errorhandler": "^1.5.1",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.7.6",
     "morgan": "^1.10.0",

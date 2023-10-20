@@ -1,0 +1,11 @@
+nav.navigation 
+    .navigation__wrap 
+        .navigation__logo__wrap 
+            a.navigation__logo(href="/")
+                | Logo here
+
+        ul.navigation__list  
+            each item in ["Home", "About", "Features"]
+                li.navigation__list__item 
+                    a.navigation__list__link(href=Link(item))=item
+        
